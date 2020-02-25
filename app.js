@@ -59,7 +59,7 @@ const serve = () => {
 }
 
 // db setup
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoHeadlines'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mongoHeadlines'
 const onMongoConnectionError = error => console.log(error)
 mongoose
   .connect(MONGODB_URI)
