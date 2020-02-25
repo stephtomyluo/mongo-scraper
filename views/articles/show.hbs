@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col">
+    <div class="jumbotron mt-5">
+      <h1 class="display-4">{{article.title}}</h1>
+      <p class="lead">{{article.summary}}</p>
+      <hr class="my-4">
+      <p class="float-right text-info">Scraped: {{dateLong value=article.createdAt}}</p>
+      <a target="_blank" class="btn btn-primary btn-lg lead" href="{{article.url}}" role="button">Read Article</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6">
+    {{#if article.notes}}
+    <ul class="list-group">
+      {{#each article.notes}}
+      <li class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-end mb-1">
+          <small class="pointer" style="cursor: pointer;" onclick="Articles.deleteNote('{{_id}}')">🗑️</small>
+        </div>
+        <p class="mb-1">{{text}}</p>
+      </li>
+      {{/each}}
+    </ul>
+    {{else}}
+    <h3>Notes will be added here!</h3>
+    {{/if}}
+  </div>
+
+  <div class="col-12 col-md-6">
+    <form method="POST" action="/articles/{{article._id}}/notes">
+      <div class="form-group">
+        <label for="note-text">Create New Note</label>
+        <textarea name="note" class="form-control" id="note-text" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Note</button>
+    </form>
+  </div>
+</div>

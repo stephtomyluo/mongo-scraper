@@ -1,0 +1,12 @@
+<article class="card article m-2" style="width: 18rem;" data-article="{{_id}}">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{summary}}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <a href="/articles/{{_id}}" class="btn btn-link">View Notes</a>
+    <button class="btn btn-outline-info float-right" onclick="Articles.save('{{_id}}', {{saved}})">
+      {{#if saved}} Undo Save {{else}} Save {{/if}}
+    </button>
+  </div>
+</article>
